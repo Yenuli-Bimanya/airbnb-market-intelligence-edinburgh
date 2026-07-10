@@ -3,17 +3,32 @@
   version: "0.1.0"
 
 city:
-  name: ""
-  country: ""
-  snapshot_date: ""
+  name: "Edinburgh"
+  region: "Scotland"
+  country: "United Kingdom"
+  snapshot_date: "2026-06-23"
 
 paths:
-  raw_data: "data/raw"
-  interim_data: "data/interim"
+  raw_data: "data/raw/edinburgh/2026-06-23"
+  interim_data: "data/interim/edinburgh/2026-06-23"
   processed_data: "data/processed"
   metadata: "data/metadata"
   database: "database/airbnb.duckdb"
   reports: "reports"
+
+files:
+  listings_detailed_raw: "listings.csv.gz"
+  calendar_detailed_raw: "calendar.csv.gz"
+  reviews_detailed_raw: "reviews.csv.gz"
+
+  listings_detailed_extracted: "listings_detailed.csv"
+  calendar_detailed_extracted: "calendar_detailed.csv"
+  reviews_detailed_extracted: "reviews_detailed.csv"
+
+  listings_summary: "listings.csv"
+  reviews_summary: "reviews.csv"
+  neighbourhoods: "neighbourhoods.csv"
+  neighbourhoods_geojson: "neighbourhoods.geojson"
 
 pipeline:
   fail_on_validation_error: false
