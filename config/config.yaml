@@ -1,0 +1,21 @@
+﻿project:
+  name: "Airbnb Market Intelligence Pipeline"
+  version: "0.1.0"
+
+city:
+  name: ""
+  country: ""
+  snapshot_date: ""
+
+paths:
+  raw_data: "data/raw"
+  interim_data: "data/interim"
+  processed_data: "data/processed"
+  metadata: "data/metadata"
+  database: "database/airbnb.duckdb"
+  reports: "reports"
+
+pipeline:
+  fail_on_validation_error: false
+  save_parquet: true
+  log_level: "INFO"
