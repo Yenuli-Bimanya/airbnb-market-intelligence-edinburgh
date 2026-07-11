@@ -1,0 +1,13 @@
+dataset,rule_name,rule_description,total_rows,failed_rows,failed_percentage,action
+listings,missing_id,Listing id must not be null,6244,0,0.0,remove
+listings,duplicate_id,"Duplicate listing ids should be removed, keeping first record",6244,0,0.0,remove_duplicates_keep_first
+listings,invalid_price,Price must be between 0 and 10000,6244,636,10.1858,flag
+listings,invalid_latitude,Latitude must fall within Edinburgh bounds,6244,0,0.0,flag
+listings,invalid_longitude,Longitude must fall within Edinburgh bounds,6244,0,0.0,flag
+calendar,missing_listing_id,Calendar listing_id must not be null,2284170,0,0.0,remove
+calendar,missing_date,Calendar date must not be null,2284170,0,0.0,remove
+calendar,invalid_available,Calendar availability must be True or False,2284170,0,0.0,flag
+reviews,missing_review_id,Review id must not be null,676263,0,0.0,remove
+reviews,missing_listing_id,Review listing_id must not be null,676263,0,0.0,remove
+reviews,missing_date,Review date must not be null,676263,0,0.0,flag
+reviews,duplicate_review_id,"Duplicate review ids should be removed, keeping first record",676263,0,0.0,remove_duplicates_keep_first

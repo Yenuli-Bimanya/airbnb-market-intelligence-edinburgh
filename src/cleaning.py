@@ -7,7 +7,7 @@ import pandas as pd
 
 from src.config import load_config
 
-
+#Removes $ and text, converts to float
 def clean_price(value: object) -> float | None:
     """Convert listing price values to float."""
 
@@ -24,7 +24,7 @@ def clean_price(value: object) -> float | None:
 
     return float(cleaned)
 
-
+#Removes whitespace and converts empty strings to null
 def normalize_text(value: object) -> str | None:
     """Trim whitespace and convert empty strings to null."""
 
@@ -38,7 +38,7 @@ def normalize_text(value: object) -> str | None:
 
     return text
 
-
+#Standardizes room type labels
 def normalize_room_type(value: object) -> str | None:
     """Standardize room type labels."""
 
@@ -56,7 +56,7 @@ def normalize_room_type(value: object) -> str | None:
 
     return mapping.get(text.lower(), text)
 
-
+#Standardizes property type labels
 def normalize_property_type(value: object) -> str | None:
     """Standardize property type labels."""
 
@@ -67,13 +67,13 @@ def normalize_property_type(value: object) -> str | None:
 
     return " ".join(text.split())
 
-
+#Parses date-like columns safely
 def parse_date_column(series: pd.Series) -> pd.Series:
     """Parse date-like columns safely."""
 
     return pd.to_datetime(series, errors="coerce")
 
-
+#Converts calendar availability values to booleans
 def standardize_available(value: object) -> bool | None:
     """Convert calendar availability values to booleans."""
 
@@ -93,7 +93,7 @@ def standardize_available(value: object) -> bool | None:
 
     return None
 
-
+#Creates processed output folder for the selected city snapshot
 def get_output_dir(config) -> Path:
     """Create processed output folder for the selected city snapshot."""
 
@@ -105,7 +105,7 @@ def get_output_dir(config) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir
 
-
+#Saves cleaned dataset as parquet or csv
 def save_dataset(
     dataframe: pd.DataFrame,
     output_dir: Path,
@@ -123,7 +123,7 @@ def save_dataset(
 
     return output_path
 
-
+#Cleans the detailed listings dataset
 def clean_listings(config) -> pd.DataFrame:
     """Clean the detailed listings dataset."""
 
@@ -172,7 +172,7 @@ def clean_listings(config) -> pd.DataFrame:
 
     return listings
 
-
+#Cleans the detailed calendar dataset
 def clean_calendar(config) -> pd.DataFrame:
     """Clean the detailed calendar dataset."""
 
@@ -190,7 +190,7 @@ def clean_calendar(config) -> pd.DataFrame:
 
     return calendar
 
-
+#Cleans the detailed reviews dataset
 def clean_reviews(config) -> pd.DataFrame:
     """Clean the detailed reviews dataset."""
 
@@ -203,7 +203,7 @@ def clean_reviews(config) -> pd.DataFrame:
 
     return reviews
 
-
+#Cleans the neighbourhoods lookup dataset
 def clean_neighbourhoods(config) -> pd.DataFrame:
     """Clean the neighbourhoods lookup dataset."""
 
@@ -220,6 +220,7 @@ def clean_neighbourhoods(config) -> pd.DataFrame:
     return neighbourhoods
 
 
+#Runs all cleaning steps and saves processed outputs
 def main() -> None:
     """Run all cleaning steps and save processed outputs."""
 
