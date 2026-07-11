@@ -8,36 +8,24 @@ import duckdb
 import pandas as pd
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+from src.config import load_config
 
-RAW_DIR = (
-    PROJECT_ROOT
-    / "data"
-    / "raw"
-    / "edinburgh"
-    / "2026-06-23"
-)
+config = load_config()
 
-INTERIM_DIR = (
-    PROJECT_ROOT
-    / "data"
-    / "interim"
-    / "edinburgh"
-    / "2026-06-23"
-)
-
-METADATA_DIR = PROJECT_ROOT / "data" / "metadata"
+RAW_DIR = config.paths.raw_data
+INTERIM_DIR = config.paths.interim_data
+METADATA_DIR = config.paths.metadata
 
 CSV_FILES = {
-    "listings_detailed": INTERIM_DIR / "listings_detailed.csv",
-    "calendar_detailed": INTERIM_DIR / "calendar_detailed.csv",
-    "reviews_detailed": INTERIM_DIR / "reviews_detailed.csv",
-    "listings_summary": RAW_DIR / "listings.csv",
-    "reviews_summary": RAW_DIR / "reviews.csv",
-    "neighbourhoods": RAW_DIR / "neighbourhoods.csv",
+    "listings_detailed": config.interim_file("listings_detailed_extracted"),
+    "calendar_detailed": config.interim_file("calendar_detailed_extracted"),
+    "reviews_detailed": config.interim_file("reviews_detailed_extracted"),
+    "listings_summary": config.raw_file("listings_summary"),
+    "reviews_summary": config.raw_file("reviews_summary"),
+    "neighbourhoods": config.raw_file("neighbourhoods"),
 }
 
-GEOJSON_FILE = RAW_DIR / "neighbourhoods.geojson"
+GEOJSON_FILE = config.raw_file("neighbourhoods_geojson")
 
 
 def validate_files() -> None:

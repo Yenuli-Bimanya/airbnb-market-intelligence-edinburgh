@@ -5,13 +5,16 @@ import shutil
 from pathlib import Path
 
 
-RAW_DIR = Path("data/raw/edinburgh/2026-06-23")
-OUTPUT_DIR = Path("data/interim/edinburgh/2026-06-23")
+from src.config import load_config
+
+config = load_config()
+RAW_DIR = config.paths.raw_data
+OUTPUT_DIR = config.paths.interim_data
 
 FILES_TO_EXTRACT = {
-    "listings.csv.gz": "listings_detailed.csv",
-    "calendar.csv.gz": "calendar_detailed.csv",
-    "reviews.csv.gz": "reviews_detailed.csv",
+    config.files.listings_detailed_raw: config.files.listings_detailed_extracted,
+    config.files.calendar_detailed_raw: config.files.calendar_detailed_extracted,
+    config.files.reviews_detailed_raw: config.files.reviews_detailed_extracted,
 }
 
 
