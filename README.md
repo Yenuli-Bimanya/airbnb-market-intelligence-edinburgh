@@ -14,7 +14,7 @@ The solution ingests, profiles, validates, cleans, transforms, and models Airbnb
 - Create analytics-ready enriched datasets
 - Implement a dimensional model in DuckDB
 - Perform exploratory and statistical analysis
-- Build an interactive Streamlit dashboard
+- Build an interactive Plotly Dash dashboard
 - Document assumptions, decisions, and limitations
 
 
@@ -49,14 +49,14 @@ The solution ingests, profiles, validates, cleans, transforms, and models Airbnb
 - **Section 07:** NLP (review text analysis)
   - `notebooks/05_nlp_reviews.ipynb`
   - Sentiment and topic outputs in `reports/tables/` and `reports/figures/`
-
-
+- **Section 08:** Interactive dashboard
+  - `dashboard/app.py`
+  - `dashboard/assets/custom.css`
 
 ### Remaining
 
-- Section 08: Plotly Dash dashboard (`dashboard/app.py`) — built, pending final testing and screenshots
 - Final PDF report (`reports/`)
-- Optional docs: `docs/architecture.md`, `docs/data_lineage.md`
+- Dashboard screenshots (`reports/screenshots/`)
 
 See `docs/completed_work.md` and `docs/incomplete_work.md` for full details.
 
@@ -72,6 +72,8 @@ See `docs/completed_work.md` and `docs/incomplete_work.md` for full details.
 - seaborn
 - scipy
 - TextBlob
+- Dash
+- Plotly
 - SQL
 - Jupyter
 - pytest
@@ -103,7 +105,7 @@ See `docs/completed_work.md` and `docs/incomplete_work.md` for full details.
 - `notebooks/` – exploration, statistics, and modelling
 - `src/` – reusable pipeline source code
 - `sql/` – database schema and analytical SQL
-- `dashboard/` – Streamlit application
+- `dashboard/` – Plotly Dash application
 - `tests/` – automated tests
 - `reports/` – figures, tables, and final report
 - `docs/` – assumptions, decisions, lineage, and disclosures
@@ -181,10 +183,15 @@ python -m src.database
 
 
 
+### 6. Run tests
+
+```powershell
+python -m pytest tests/ -v
+```
+
 ### 7. Run the Dash dashboard
 
 ```powershell
-python -m pip install dash plotly dash-bootstrap-components
 python dashboard/app.py
 ```
 
@@ -257,7 +264,9 @@ Run each notebook with the `.venv` kernel after executing `python -m src.pipelin
 | EDA figures     | `reports/figures/01`–`07_*.png` |
 | ML figures      | `reports/figures/08`–`09_*.png` |
 | NLP figures     | `reports/figures/10`–`12_*.png` |
-| Analysis tables | `reports/tables/*.csv`          |
+| Analysis tables | `reports/tables/*.csv` |
+| Dashboard screenshots | `reports/screenshots/` (for PDF report) |
+| Final PDF report | `reports/airbnb_market_intelligence_edinburgh.pdf` |
 
 
 
@@ -269,6 +278,8 @@ Run each notebook with the `.venv` kernel after executing `python -m src.pipelin
 - `docs/assumptions.md` – project assumptions
 - `docs/completed_work.md` – completed work summary
 - `docs/incomplete_work.md` – remaining work and deferred scope
+- `docs/architecture.md` – pipeline and warehouse architecture
+- `docs/data_lineage.md` – source-to-output data lineage
 - `docs/ai_usage_disclosure.md` – AI usage disclosure
 
 

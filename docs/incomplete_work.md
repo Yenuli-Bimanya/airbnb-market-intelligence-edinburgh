@@ -1,83 +1,105 @@
 # Incomplete Work Summary
 
 This document records work that was **not completed** in the Edinburgh Airbnb
-Market Intelligence project, with reasons and recommended next steps. It is
-provided to meet the assignment requirement for honest scope reporting.
-
----
-
-## Section 08: Interactive Dashboard
-
-**Status:** In progress (Plotly Dash)
-
-| Item | Status | Notes |
-|------|--------|-------|
-| Dash dashboard (`dashboard/app.py`) | Built | Market Explorer, NLP, ML, and Stats tabs |
-| Dashboard screenshots for report | Not done | Capture after local testing |
-| Dashboard deployment | Not done | Local-only scope for this assignment |
+Market Intelligence project, with reasons and recommended next steps.
 
 ---
 
 ## Final Deliverables
 
-**Status:** Partially complete
+**Status:** One major item remains
 
-| Item | Reason skipped / deferred | Recommended next step |
-|------|---------------------------|----------------------|
-| PDF assignment report (20+ pages) | Analysis notebooks completed first; report writing deferred | Compile EDA, stats, ML, and NLP outputs into `reports/` PDF |
-| Architecture diagram document | Not yet authored | Add pipeline + warehouse diagram to `docs/architecture.md` |
-| Data lineage document | Not yet authored | Document source-to-dashboard flow in `docs/data_lineage.md` |
-| Dashboard screenshots for report | Dashboard not built yet | Capture after Streamlit app is complete |
+| Item | Status | What to do |
+|------|--------|------------|
+| PDF assignment report (20+ pages) | **Not started** | Compile findings into `reports/airbnb_market_intelligence_edinburgh.pdf` |
+| Dashboard screenshots | **Not started** | Save 5 tab screenshots to `reports/screenshots/` for the report |
+
+Everything else required for a strong submission is implemented in code,
+notebooks, dashboard, and documentation.
 
 ---
 
-## Advanced / Out-of-Scope Enhancements
+## PDF Report Checklist (for after your break)
 
-These items were intentionally excluded to preserve depth on the Edinburgh
-single-city workflow.
+Use these sources:
+
+| Report section | Source |
+|----------------|--------|
+| Executive summary | `docs/completed_work.md`, key notebook findings |
+| Data sources & limitations | `docs/data_dictionary.md`, notebook 01 |
+| Pipeline architecture | `docs/architecture.md`, `docs/data_lineage.md` |
+| EDA findings | notebook 02 + `reports/figures/01`–`07_*.png` |
+| Statistical analysis | notebook 03 + `reports/tables/hypothesis_test_summary.csv` |
+| ML results | notebook 04 + figures `08`–`09` |
+| NLP results | notebook 05 + figures `10`–`12` |
+| Dashboard walkthrough | screenshots from `reports/screenshots/` |
+| Incomplete work / future scope | this file |
+| AI disclosure | `docs/ai_usage_disclosure.md` |
+
+Suggested screenshot set:
+
+1. Dashboard overview with KPI cards
+2. Market Explorer with neighbourhood filter applied
+3. Reviews & NLP tab
+4. ML Insights tab
+5. Statistical Tests tab
+
+---
+
+## Section 08: Interactive Dashboard
+
+**Status:** Complete
+
+| Item | Status |
+|------|--------|
+| Dash dashboard (`dashboard/app.py`) | Done |
+| Custom styling (`dashboard/assets/custom.css`) | Done |
+| Dashboard screenshots for report | Pending |
+
+---
+
+## Optional Enhancements (deliberately deferred)
 
 | Item | Reason not implemented |
 |------|------------------------|
-| Multi-city comparison (e.g. Edinburgh vs Glasgow) | Assignment strategy was depth-first on one city |
-| Real-time or scheduled ingestion (Airflow, cron, cloud functions) | Snapshot-based batch pipeline was sufficient for scope |
-| Production-grade orchestration (Docker, CI/CD deployment) | Local reproducible pipeline was the target |
-| Transformer-based NLP (BERT, sentiment transformers) | TextBlob + TF-IDF/NMF chosen for interpretability and speed |
-| Full-corpus NLP on all 676k reviews | Sampled subsets used for notebook performance and reproducibility |
-| Language-specific NLP pipelines | Only basic multilingual topic noise identified; no language detection added |
-| SHAP or advanced model explainability | Random Forest feature importance used instead |
-| XGBoost / neural price models | sklearn Ridge, Random Forest, and Gradient Boosting were sufficient |
-| Geospatial interactive maps in dashboard | EDA includes neighbourhood charts but not interactive map layer |
-| RAG / LLM Q&A over reviews | Out of scope for this assignment phase |
+| Multi-city comparison | Depth-first Edinburgh scope |
+| Real-time / scheduled ingestion | Snapshot batch pipeline was sufficient |
+| Production deployment (Docker, CI/CD) | Local reproducible project was the target |
+| Transformer NLP (BERT, etc.) | TextBlob + TF-IDF/NMF chosen for speed and clarity |
+| Full-corpus NLP on all 676k reviews | Sampled subsets used for runtime |
+| SHAP / advanced ML explainability | Random Forest feature importance used |
+| Geospatial interactive map layer | Neighbourhood charts used instead |
+| Dashboard cloud deployment | Local demo sufficient for assignment |
 
 ---
 
-## Testing and Engineering Gaps
-
-| Item | Current state | Why incomplete |
-|------|---------------|----------------|
-| End-to-end pipeline integration test | Partial unit tests only | Time prioritised on pipeline + analysis deliverables |
-| Dashboard tests | None | Dashboard not yet implemented |
-| Notebook regression tests | None | Manual notebook execution used |
-| Data quality monitoring in production | None | Local analytical project, not production deployment |
-
----
-
-## Documentation Gaps
+## Testing Gaps
 
 | Item | Current state |
 |------|---------------|
-| `docs/completed_work.md` | Updated through Section 07 |
+| Unit tests for cleaning / validation / transformations | Implemented in `tests/` |
+| End-to-end pipeline integration test | Not implemented |
+| Dashboard automated tests | Not implemented |
+| Notebook regression tests | Not implemented |
+
+---
+
+## Documentation Status
+
+| Item | Current state |
+|------|---------------|
+| `docs/completed_work.md` | Updated through Section 08 |
 | `docs/incomplete_work.md` | This document |
-| `README.md` | Updated to reflect current project status |
-| `docs/architecture.md` | Not created |
-| `docs/data_lineage.md` | Not created |
+| `docs/architecture.md` | Completed |
+| `docs/data_lineage.md` | Completed |
+| `docs/assumptions.md` | Expanded |
+| `docs/decision_log.md` | Expanded |
+| `docs/ai_usage_disclosure.md` | Expanded through Section 08 |
 
 ---
 
 ## Summary
 
-The project delivers strong coverage of Sections 02–07 with a reproducible
-pipeline, dimensional warehouse, and four analysis notebooks (EDA, statistics,
-ML, NLP). The main remaining deliverables are the **Streamlit dashboard** and
-the **final PDF report**. Advanced production and multi-city features were
-deliberately deferred to maintain quality and depth on the Edinburgh use case.
+The project is submission-ready except for the **final PDF report** and
+**dashboard screenshots**. No further code changes are required before those
+two tasks.

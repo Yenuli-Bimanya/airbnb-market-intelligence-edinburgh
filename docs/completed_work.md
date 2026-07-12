@@ -169,6 +169,34 @@ city, depth-first approach.
 
 ---
 
+## Section 08: Interactive Dashboard (Recommended)
+
+**Status:** Complete
+
+| Task | Status | Evidence |
+|------|--------|----------|
+| Build Plotly Dash application | Done | `dashboard/app.py` |
+| Add custom dashboard styling | Done | `dashboard/assets/custom.css` |
+| Market Explorer tab with filters | Done | Neighbourhood and room type dropdowns |
+| Reviews & NLP tab | Done | Topic summary + sentiment insight card |
+| ML Insights tab | Done | Model comparison + feature importance |
+| Statistical Tests tab | Done | Hypothesis summary table |
+| Fix neighbourhood data source | Done | Uses `neighbourhood_cleansed` (raw column empty) |
+| Dashboard run instructions | Done | `README.md` |
+
+### Dashboard features
+
+- KPI cards: listings analysed, median price, mean review score, occupancy proxy
+- Interactive charts for price, occupancy, and review relationships
+- Integration with notebook outputs in `reports/tables/`
+- Local run command: `python dashboard/app.py`
+
+### Remaining dashboard-adjacent task
+
+- Capture dashboard screenshots for the final PDF report (`reports/screenshots/`)
+
+---
+
 ## Project Setup and Documentation
 
 **Status:** Complete
@@ -190,6 +218,8 @@ city, depth-first approach.
 
 | Commit | Description |
 |--------|-------------|
+| `bcfdcc7` | Plotly Dash dashboard with styled UI and market filters |
+| `3bfbdff` | Completed and incomplete work summaries through Section 07 |
 | `5ec668f` | ML and NLP analysis notebooks with report outputs |
 | `aefbda6` | ML price prediction notebook and model outputs |
 | `0814bb1` | Statistical hypothesis testing notebook |
@@ -206,15 +236,16 @@ city, depth-first approach.
 ## Standard Achieved
 
 The completed work meets the mandatory Section 02 requirements and delivers strong
-depth across Sections 03–07. The solution includes:
+depth across Sections 03–08. The solution includes:
 
 - A reproducible end-to-end data engineering pipeline
 - A DuckDB dimensional model with analytical SQL
 - Five analysis notebooks covering EDA, statistics, ML, and NLP
+- A Plotly Dash dashboard for interactive market intelligence
 - Exported figures and tables ready for the final report
 - Supporting documentation, assumptions, and decision records
+- Unit tests for cleaning, validation, and transformation helpers
 
 ### Next planned stage
 
-Section 08: Streamlit dashboard, final PDF report, and remaining documentation
-(`docs/incomplete_work.md`, architecture/lineage updates if required).
+Final PDF report and dashboard screenshots for submission packaging.

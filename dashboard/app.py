@@ -40,7 +40,12 @@ CITY = "Edinburgh"
 
 
 def load_listings() -> pd.DataFrame:
-    listings = pd.read_parquet(PROCESSED_DIR / "listings_enriched.parquet")
+    listings_path = PROCESSED_DIR / "listings_enriched.parquet"
+    if not listings_path.exists():
+        raise FileNotFoundError(
+            f"Missing {listings_path}. Run `python -m src.pipeline` first."
+        )
+    listings = pd.read_parquet(listings_path)
     listings = listings[(listings["is_valid_price"] == True) & listings["price"].notna()].copy()
     listings["price"] = listings["price"].astype(float)
     return listings
@@ -536,4 +541,4 @@ def update_market_charts(selected_neighbourhoods, selected_room_types, active_ta
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=8050)
+    app.run(debug=False, host="127.0.0.1", port=8050)
