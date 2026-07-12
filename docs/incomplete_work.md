@@ -8,12 +8,13 @@ provided to meet the assignment requirement for honest scope reporting.
 
 ## Section 08: Interactive Dashboard
 
-**Status:** Not started
+**Status:** In progress (Plotly Dash)
 
-| Item | Reason skipped / deferred | Recommended next step |
-|------|---------------------------|----------------------|
-| Streamlit dashboard (`dashboard/app.py`) | Prioritised pipeline depth and analytical notebooks first | Build a 4–5 page Streamlit app using DuckDB and `reports/` outputs |
-| Dashboard deployment | Local-only scope for this assignment | Deploy to Streamlit Community Cloud if demo hosting is required |
+| Item | Status | Notes |
+|------|--------|-------|
+| Dash dashboard (`dashboard/app.py`) | Built | Market Explorer, NLP, ML, and Stats tabs |
+| Dashboard screenshots for report | Not done | Capture after local testing |
+| Dashboard deployment | Not done | Local-only scope for this assignment |
 
 ---
 

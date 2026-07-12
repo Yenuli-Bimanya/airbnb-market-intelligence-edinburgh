@@ -17,7 +17,11 @@ The solution ingests, profiles, validates, cleans, transforms, and models Airbnb
 - Build an interactive Streamlit dashboard
 - Document assumptions, decisions, and limitations
 
+
+
 ## Current Status
+
+
 
 ### Completed
 
@@ -46,9 +50,11 @@ The solution ingests, profiles, validates, cleans, transforms, and models Airbnb
   - `notebooks/05_nlp_reviews.ipynb`
   - Sentiment and topic outputs in `reports/tables/` and `reports/figures/`
 
+
+
 ### Remaining
 
-- Section 08: Streamlit dashboard (`dashboard/app.py`)
+- Section 08: Plotly Dash dashboard (`dashboard/app.py`) — built, pending final testing and screenshots
 - Final PDF report (`reports/`)
 - Optional docs: `docs/architecture.md`, `docs/data_lineage.md`
 
@@ -70,15 +76,21 @@ See `docs/completed_work.md` and `docs/incomplete_work.md` for full details.
 - Jupyter
 - pytest
 
+
+
 ## Dataset
 
-| Field | Value |
-|---|---|
-| City | Edinburgh |
-| Region | Scotland |
-| Country | United Kingdom |
-| Snapshot date | 2026-06-23 |
-| Source | [Inside Airbnb](https://insideairbnb.com/) |
+
+| Field         | Value                                      |
+| ------------- | ------------------------------------------ |
+| City          | Edinburgh                                  |
+| Region        | Scotland                                   |
+| Country       | United Kingdom                             |
+| Snapshot date | 2026-06-23                                 |
+| Source        | [Inside Airbnb](https://insideairbnb.com/) |
+
+
+
 
 ## Repository Structure
 
@@ -96,7 +108,11 @@ See `docs/completed_work.md` and `docs/incomplete_work.md` for full details.
 - `reports/` – figures, tables, and final report
 - `docs/` – assumptions, decisions, lineage, and disclosures
 
+
+
 ## Setup Instructions
+
+
 
 ### 1. Create virtual environment
 
@@ -105,11 +121,15 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
+
+
 ### 2. Install dependencies
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
+
+
 
 ### 3. Download Edinburgh dataset
 
@@ -129,6 +149,8 @@ Required files:
 - `neighbourhoods.csv`
 - `neighbourhoods.geojson`
 
+
+
 ### 4. Run the full pipeline
 
 ```powershell
@@ -144,6 +166,8 @@ This executes the following steps in order:
 5. Enrich listings
 6. Build DuckDB star schema
 
+
+
 ### 5. Run individual pipeline steps (optional)
 
 ```powershell
@@ -155,25 +179,44 @@ python -m src.transformations
 python -m src.database
 ```
 
-### 6. Run analytical SQL
+
+
+### 7. Run the Dash dashboard
+
+```powershell
+python -m pip install dash plotly dash-bootstrap-components
+python dashboard/app.py
+```
+
+Open `http://127.0.0.1:8050` in your browser.
+
+### 8. Run analytical SQL
 
 ```powershell
 python -c "import duckdb; con=duckdb.connect('database/airbnb.duckdb'); print(con.execute(open('sql/analytical_queries.sql').read()).fetchdf())"
 ```
 
+
+
 ## Pipeline Outputs
 
-| Output | Location |
-|---|---|
-| Dataset inventory | `data/metadata/dataset_inventory.csv` |
-| Schema report | `data/metadata/schema_report.csv` |
-| Validation report | `data/metadata/validation_report.csv` |
-| Cleaned datasets | `data/processed/edinburgh/2026-06-23/*_clean.parquet` |
-| Validated datasets | `data/processed/edinburgh/2026-06-23/*_validated.parquet` |
-| Enriched listings | `data/processed/edinburgh/2026-06-23/listings_enriched.parquet` |
-| DuckDB warehouse | `database/airbnb.duckdb` |
+
+| Output             | Location                                                        |
+| ------------------ | --------------------------------------------------------------- |
+| Dataset inventory  | `data/metadata/dataset_inventory.csv`                           |
+| Schema report      | `data/metadata/schema_report.csv`                               |
+| Validation report  | `data/metadata/validation_report.csv`                           |
+| Cleaned datasets   | `data/processed/edinburgh/2026-06-23/*_clean.parquet`           |
+| Validated datasets | `data/processed/edinburgh/2026-06-23/*_validated.parquet`       |
+| Enriched listings  | `data/processed/edinburgh/2026-06-23/listings_enriched.parquet` |
+| DuckDB warehouse   | `database/airbnb.duckdb`                                        |
+
+
+
 
 ## DuckDB Star Schema
+
+
 
 ### Dimension tables
 
@@ -182,32 +225,42 @@ python -c "import duckdb; con=duckdb.connect('database/airbnb.duckdb'); print(co
 - `dw.dim_host`
 - `dw.dim_listing`
 
+
+
 ### Fact tables
 
 - `dw.fact_calendar`
 - `dw.fact_reviews`
 - `dw.fact_listing_performance`
 
+
+
 ## Analysis Notebooks
 
-| Notebook | Section | Purpose |
-|----------|---------|---------|
-| `01_dataset_familiarization.ipynb` | 02 | Schema, keys, data quality exploration |
-| `02_eda_edinburgh.ipynb` | 04 | Market EDA with business interpretations |
-| `03_statistical_analysis.ipynb` | 05 | Hypothesis testing (H1–H5) |
-| `04_ml_price_prediction.ipynb` | 06 | Price prediction models |
-| `05_nlp_reviews.ipynb` | 07 | Review sentiment and topic modelling |
+
+| Notebook                           | Section | Purpose                                  |
+| ---------------------------------- | ------- | ---------------------------------------- |
+| `01_dataset_familiarization.ipynb` | 02      | Schema, keys, data quality exploration   |
+| `02_eda_edinburgh.ipynb`           | 04      | Market EDA with business interpretations |
+| `03_statistical_analysis.ipynb`    | 05      | Hypothesis testing (H1–H5)               |
+| `04_ml_price_prediction.ipynb`     | 06      | Price prediction models                  |
+| `05_nlp_reviews.ipynb`             | 07      | Review sentiment and topic modelling     |
+
 
 Run each notebook with the `.venv` kernel after executing `python -m src.pipeline`.
 
 ## Report Outputs
 
-| Output type | Location |
-|-------------|----------|
-| EDA figures | `reports/figures/01`–`07_*.png` |
-| ML figures | `reports/figures/08`–`09_*.png` |
-| NLP figures | `reports/figures/10`–`12_*.png` |
-| Analysis tables | `reports/tables/*.csv` |
+
+| Output type     | Location                        |
+| --------------- | ------------------------------- |
+| EDA figures     | `reports/figures/01`–`07_*.png` |
+| ML figures      | `reports/figures/08`–`09_*.png` |
+| NLP figures     | `reports/figures/10`–`12_*.png` |
+| Analysis tables | `reports/tables/*.csv`          |
+
+
+
 
 ## Related Documentation
 
@@ -218,6 +271,7 @@ Run each notebook with the `.venv` kernel after executing `python -m src.pipelin
 - `docs/incomplete_work.md` – remaining work and deferred scope
 - `docs/ai_usage_disclosure.md` – AI usage disclosure
 
-## Author
 
-Kasun Wijerathna
+
+
+
