@@ -1,0 +1,13 @@
+pandas
+duckdb
+pyyaml
+pyarrow
+pytest
+scikit-learn
+matplotlib
+seaborn
+scipy
+textblob
+dash
+plotly
+dash-bootstrap-components

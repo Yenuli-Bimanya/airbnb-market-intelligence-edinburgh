@@ -1,0 +1,8 @@
+dataset,file_name,file_format,row_count,column_count,size_bytes,size_mb
+listings_detailed,listings_detailed.csv,CSV,6244,90,17274112,16.47
+calendar_detailed,calendar_detailed.csv,CSV,2284170,5,78798221,75.15
+reviews_detailed,reviews_detailed.csv,CSV,676263,6,207665110,198.04
+listings_summary,listings.csv,CSV,6258,19,1199265,1.14
+reviews_summary,reviews.csv,CSV,676263,2,15117568,14.42
+neighbourhoods,neighbourhoods.csv,CSV,111,2,2568,0.0
+neighbourhoods_geojson,neighbourhoods.geojson,GeoJSON,111,3,325835,0.31

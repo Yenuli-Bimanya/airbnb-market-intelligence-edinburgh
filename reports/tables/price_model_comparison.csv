@@ -1,0 +1,4 @@
+model,cv_mae_mean,test_mae,test_rmse,test_r2
+Gradient Boosting,93.23,93.84,330.99,0.0848
+Ridge Regression,94.31,94.04,320.05,0.1442
+Random Forest,94.83,96.82,332.54,0.0761
